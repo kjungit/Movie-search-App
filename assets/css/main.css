@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 body .detail-bg {
   width: 100%;

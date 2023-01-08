@@ -1,5 +1,7 @@
 # 🎬 Movie App
 
+[ 작업한 대모 사이트 ](https://strong-rolypoly-f45a54.netlify.app/)
+
 - 작업 기간: 2023년 01월 06일(금) ~ 2023년 01월 08일(일)
 
 - 내용:

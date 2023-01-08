@@ -148,6 +148,7 @@ function renderMovies(movies, isFirst) {
       // 상세정보창 열기
       imgWrap.addEventListener("click", async function () {
         spinnerDe.style.display = "block";
+        bodyEl.style.overflow = "hidden";
         const res = await getDetail(movie.imdbID);
         renderDetail(res);
       });
@@ -270,11 +271,13 @@ function renderDetail(movie) {
 
   detailBg.append(detailEl);
   document.body.prepend(detailBg);
-  // 상세페이지를 클릭 했을 떄
+
+  // 상세페이지를 닫을 떄
   document.addEventListener("click", (e) => {
     if (e.target.className === "detail-bg") {
       const datileBg = document.querySelector(".detail-bg");
       if (datileBg !== null) {
+        bodyEl.style.overflow = "auto";
         datileBg.remove(datileBg);
       }
     }

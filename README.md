@@ -1,6 +1,6 @@
 # 🎬 Movie App
 
-- 작업 기간: 2023년 01월 06일(금) ~ 2023년 01월 08일(일)
+[ 작업한 데모 사이트 ](https://strong-rolypoly-f45a54.netlify.app/)
 
 - 내용:
   - omdb API로 영화 검색 구현

@@ -10,6 +10,7 @@ const spinnerDe = document.querySelector(".spinner-border.de");
 const spinnerSc = document.querySelector(".spinner-border.sc");
 const searchNull = document.querySelector(".search-null");
 const toTopEl = document.querySelector(".to-top");
+
 // 새로운 페이지 배열
 let newPage = [];
 
@@ -31,6 +32,7 @@ inputEl.addEventListener("keydown", async function (event) {
     // page를 1로 불러오기
     page = 1;
     // 영화정보 호출
+
     const movies = await getMovies();
     // 영화정보가 없을 때
     if (movies.Response === "False") {
@@ -81,6 +83,7 @@ buttonEl.addEventListener("click", async function () {
   searchEl.className = "search-area active";
   contentsEl.style.display = "flex";
 });
+
 // top으로 이동
 toTopEl.addEventListener("click", function () {
   gsap.to(window, 0.1, {
@@ -114,7 +117,6 @@ function renderMovies(movies, isFirst) {
       const imgWrap = document.createElement("div");
 
       // 이미지 없을 때
-
       movie.Poster === "N/A"
         ? (posterEl.src = "./assets/img/no-img.jpg")
         : (posterEl.src = movie.Poster);
@@ -198,6 +200,7 @@ observer.observe(viewMoreEl);
 
 // 실시간 이미지 리사이징
 function reSize(url, size = 700) {
+  console.log(url == true);
   return url.replace("SX300", `SX${size}`);
 }
 
@@ -299,6 +302,7 @@ function moreThanLength(str, n) {
 function onlyNumberAndEnglish(str) {
   return /^[A-Za-z][A-Za-z0-9]*$/.test(str);
 }
+
 // [시각적 피드백]: 에러메시지를 띄웁니다
 function displayErrorMessage(message) {
   elErrorMessage.classList.add("show");
@@ -310,12 +314,10 @@ const inputform = document.querySelector("label");
 inputform.addEventListener("input", (el) => {
   const inputText = el.target.closest('input[type="text"]').value;
   if (moreThanLength(inputText, 3) && onlyNumberAndEnglish(inputText)) {
-    const classLength = inputform.classList.length;
     inputform.classList.add("valid");
     const iClass = inputform.querySelector("i");
     iClass.nextSibling.textContent = "";
   } else {
-    const classLength = inputform.classList.length;
     if (inputform.classList.item === "valid") {
       inputform.classList.remove("valid");
     }

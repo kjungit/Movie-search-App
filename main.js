@@ -216,7 +216,6 @@ observer.observe(viewMoreEl);
 
 // 실시간 이미지 리사이징
 function reSize(url, size = 700) {
-  console.log(url !== true);
   return url.replace("SX300", `SX${size}`);
 }
 

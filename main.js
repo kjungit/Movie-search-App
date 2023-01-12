@@ -11,9 +11,6 @@ const spinnerSc = document.querySelector(".spinner-border.sc");
 const searchNull = document.querySelector(".search-null");
 const toTopEl = document.querySelector(".to-top");
 
-// 새로운 페이지 배열
-let newPage = [];
-
 let id = "";
 let type = "movie";
 let year = "";
@@ -208,7 +205,6 @@ const onIntersect = function (entries) {
 
       const movies = await getMovies();
       renderMovies(movies.Search, false);
-      newPage = document.querySelectorAll(".title-area-f");
     }
     spinnerSc.style.display = "none";
   });
@@ -334,13 +330,13 @@ inputform.addEventListener("input", (el) => {
   if (moreThanLength(inputText, 3) && onlyNumberAndEnglish(inputText)) {
     inputform.classList.add("valid");
     const iClass = inputform.querySelector("i");
-    iClass.nextSibling.textContent = "";
+    iClass.textContent = "";
   } else {
     if (inputform.classList.item === "valid") {
       inputform.classList.remove("valid");
     }
     inputform.classList.add("invalid");
     const iClass = inputform.querySelector("i");
-    iClass.nextSibling.textContent = "📌 3자 이상 영어를 입력해주세요.";
+    iClass.textContent = "📌 3자 이상 영어를 입력해주세요.";
   }
 });

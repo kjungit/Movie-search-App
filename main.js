@@ -16,6 +16,7 @@ let newPage = [];
 
 let id = "";
 let type = "movie";
+let year = "";
 let page = 1;
 let totalpage = 0;
 let OMDB_API_KEY = "7035c60c";
@@ -42,6 +43,7 @@ inputEl.addEventListener("keydown", async function (event) {
       moviesEl.style.display = "none";
       return;
     }
+
     // 영화정보가 있을 때
     moviesEl.style.display = "flex";
     searchNull.style.display = "none";
@@ -94,13 +96,28 @@ toTopEl.addEventListener("click", function () {
 // 영화 정보 호출
 async function getMovies() {
   const json = await fetch(
-    `https://omdbapi.com/?apikey=${OMDB_API_KEY}&s=${id}&type=${type}&page=${page}`
+    `https://omdbapi.com/?apikey=${OMDB_API_KEY}&s=${id}&type=${type}&page=${page}&y=${year}`
   ).then((res) => res.json());
   return json;
 }
 
+const selectEl = document.querySelector("select");
+// 영화연도별 검색
+(function yearMake() {
+  const year = new Date().getFullYear();
+  for (let i = year; i >= 1985; i -= 1) {
+    const yealEl = document.createElement("option");
+    yealEl.textContent = i;
+    yealEl.setAttribute("value", i);
+    selectEl.append(yealEl);
+  }
+})();
+const getValue = (target) => {
+  year = target.value;
+};
+
 // 영화 정보를 받아서 메인에 렌더링
-function renderMovies(movies, isFirst) {
+async function renderMovies(movies, isFirst) {
   const liEls =
     movies &&
     movies.map(function (movie) {
@@ -123,7 +140,6 @@ function renderMovies(movies, isFirst) {
       movie.Poster === "N/A"
         ? (backPoser.src = "./assets/img/no-img-back.jpg")
         : (backPoser.src = movie.Poster);
-
       // front El (Flip 애니메이션 앞 요소)
       titleElFront.textContent = movie.Title;
       yearEl.textContent = movie.Year;
@@ -200,7 +216,7 @@ observer.observe(viewMoreEl);
 
 // 실시간 이미지 리사이징
 function reSize(url, size = 700) {
-  console.log(url == true);
+  console.log(url !== true);
   return url.replace("SX300", `SX${size}`);
 }
 

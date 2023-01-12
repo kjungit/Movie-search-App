@@ -110,6 +110,16 @@ body .search-area {
   gap: 10px;
   transition: 0.1s;
 }
+body .search-area .select {
+  width: 100px;
+  height: 45px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  text-align: center;
+}
 body .search-area .input-form.valid > .message,
 body .search-area .input-form.invalid > .message {
   display: block;

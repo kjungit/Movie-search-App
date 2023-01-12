@@ -112,8 +112,11 @@ const selectEl = document.querySelector("select");
     selectEl.append(yealEl);
   }
 })();
-const getValue = (target) => {
+const getValueYear = (target) => {
   year = target.value;
+};
+const getValueType = (target) => {
+  type = target.value;
 };
 
 // 영화 정보를 받아서 메인에 렌더링

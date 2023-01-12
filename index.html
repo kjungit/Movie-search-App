@@ -50,8 +50,14 @@
       <a href="">
         <h1 class="title">Movie Search</h1>
       </a>
-      <select class="select" onchange="getValue(this)">
+      <select class="select" onchange="getValueYear(this)">
         <option value="">All Year</option>
+      </select>
+
+      <select class="type" onchange="getValueType(this)">
+        <option value="movie">movie</option>
+        <option value="series">series</option>
+        <option value="episode">episode</option>
       </select>
       <label class="input-form">
         <input
